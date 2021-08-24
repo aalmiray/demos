@@ -1,11 +1,12 @@
 package com.acme.demo;
 
 import io.micronaut.configuration.picocli.PicocliRunner;
-import io.reactivex.Single;
 import jakarta.inject.Inject;
-import org.flywaydb.core.Flyway;
 import picocli.CommandLine.Command;
 import reactor.core.publisher.Flux;
+
+import java.time.Duration;
+import java.util.Arrays;
 
 @Command(name = "demo", description = "demo",
     mixinStandardHelpOptions = true)
@@ -14,18 +15,14 @@ public class Application implements Runnable {
     TodoRepository repository;
 
     public void run() {
-        // force migration
-        Flyway.configure()
-            .baselineOnMigrate(true)
-            .dataSource("jdbc:oracle:thin:@localhost:1521/XEPDB1", "System", "Admin01").load()
-            .migrate();
-
-        Single.fromPublisher(repository.save(new Todo("Javadoc"))).subscribe();
-        Single.fromPublisher(repository.save(new Todo("Application"))).subscribe();
+        Flux.from(repository.saveAll(Arrays.asList(new Todo("Javadoc"),
+            new Todo("Application"))))
+            .blockLast(Duration.ofSeconds(10));
 
         Flux.from(repository.findAll())
             .doOnError(Throwable::printStackTrace)
-            .subscribe(System.out::println);
+            .doOnNext(System.out::println)
+            .blockLast(Duration.ofSeconds(10));
     }
 
     public static void main(String[] args) throws Exception {
