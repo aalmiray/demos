@@ -53,7 +53,9 @@ public class Application {
     ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
         ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
         initializer.setConnectionFactory(connectionFactory);
-        initializer.setDatabasePopulator(new ResourceDatabasePopulator(new ClassPathResource("oracle.sql")));
+        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(new ClassPathResource("oracle.sql"));
+        databasePopulator.setSeparator("#");
+        initializer.setDatabasePopulator(databasePopulator);
         return initializer;
     }
 
