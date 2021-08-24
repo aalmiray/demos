@@ -1,0 +1,6 @@
+applicationType: cli
+defaultPackage: com.acme.demo
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, data, data-r2dbc, h2, java, jdbc-ucp, junit, logback, maven, picocli, picocli-java-application, picocli-junit, r2dbc, readme, shade, yaml]
