@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: micronaut-demo
+
+datasources:
+  default:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    driverClassName: oracle.jdbc.OracleDriver
+    username: System
+    password: Admin01
+    schema-generate: CREATE_DROP
+    dialect: ORACLE
+
+jpa.default.properties.hibernate.hbm2ddl.auto: create-drop

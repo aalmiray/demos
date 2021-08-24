@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.acme.demo
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, http-client, java, java-application, jdbc-ucp, junit, logback, maven, netty-server, oracle, readme, shade, testcontainers, yaml]
