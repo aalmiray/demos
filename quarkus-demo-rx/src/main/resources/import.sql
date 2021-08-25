@@ -1,2 +1,2 @@
-INSERT INTO todo(description, done) VALUES ('Javadoc', false);
-INSERT INTO todo(description, done) VALUES ('Application', false);
+INSERT INTO Todo(description, done) VALUES ('Javadoc', false);
+INSERT INTO Todo(description, done) VALUES ('Application', false);
