@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
 import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
+import org.springframework.r2dbc.connection.init.ScriptUtils;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -54,7 +55,7 @@ public class Application {
         ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
         initializer.setConnectionFactory(connectionFactory);
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(new ClassPathResource("oracle.sql"));
-        databasePopulator.setSeparator("#");
+        databasePopulator.setSeparator(ScriptUtils.EOF_STATEMENT_SEPARATOR);
         initializer.setDatabasePopulator(databasePopulator);
         return initializer;
     }

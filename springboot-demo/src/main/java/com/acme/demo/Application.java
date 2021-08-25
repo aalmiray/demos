@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,9 +30,12 @@ public class Application implements CommandLineRunner {
             new Object[]{"Application"}
         );
 
-        jdbcTemplate.batchUpdate("INSERT INTO todos(description, done) VALUES (?, 0)", descriptions);
+        jdbcTemplate.batchUpdate("INSERT INTO todos(description, done) VALUES (?, 0)",
+            descriptions);
 
-        jdbcTemplate.query("SELECT * FROM todos", (RowMapper<Object>) (rs, i) -> new Todo(rs.getLong("id"), rs.getString("description")))
+        jdbcTemplate.query("SELECT * FROM todos",
+            (rs, i) -> new Todo(rs.getLong("id"),
+                rs.getString("description")))
             .forEach(System.out::println);
     }
 
