@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.4</version>
+		<version>2.6.7</version>
 	</parent>
     
 	<groupId>com.acme</groupId>
@@ -15,7 +15,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-        <oracle-database.version>21.1.0.0</oracle-database.version>
+        <oracle-database.version>21.5.0.0</oracle-database.version>
 	</properties>
     
 	<dependencies>

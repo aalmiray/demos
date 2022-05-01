@@ -8,7 +8,7 @@ datasources:
     driverClassName: oracle.jdbc.OracleDriver
     username: System
     password: Admin01
-    schema-generate: CREATE_DROP
+    schema-generate: CREATE
     dialect: ORACLE
 
-jpa.default.properties.hibernate.hbm2ddl.auto: create-drop
+jpa.default.properties.hibernate.hbm2ddl.auto: create
